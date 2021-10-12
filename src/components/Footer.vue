@@ -1,0 +1,38 @@
+<template>
+	<footer class="footer">
+		<p>
+			<a href="https://www.baidu.com/search/jubao.html"> 举报 </a>
+			<a href="https://voice.baidu.com/act/newpneumonia/newpneumonia/?from=osari_aladin_banner#tab0">
+				数据来自百度疫情
+			</a>
+		</p>
+	</footer>
+</template>
+
+<script setup>
+	import { defineProps } from 'vue';
+
+	defineProps({
+		headTitle: String,
+	});
+</script>
+
+<style lang="scss" scoped>
+	.footer {
+		margin-top: 200px;
+		width: 100%;
+		height: 60px;
+		background-color: #fff;
+		display: flex;
+		justify-content: center;
+		p {
+			display: flex;
+			align-items: center;
+			a {
+				margin: 0 20px;
+				text-decoration: none;
+				color: #000;
+			}
+		}
+	}
+</style>
