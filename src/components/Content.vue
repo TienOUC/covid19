@@ -5,6 +5,7 @@
 		<EnterTrendLine />
 		<ChartSelectCard />
 		<EnterTrendBar />
+		<TestChart />
 	</div>
 </template>
 
@@ -15,6 +16,7 @@
 	import EnterTrendLine from './Charts/EnterTrendLine.vue';
 	import EnterTrendBar from './Charts/EnterTrendBar.vue';
 	import ChartSelectCard from './ChartSelectCard.vue';
+	import TestChart from './Charts/TestChart.vue';
 
 	const obj = reactive({});
 </script>
