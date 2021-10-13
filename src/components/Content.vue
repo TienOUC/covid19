@@ -5,20 +5,17 @@
 		<EnterTrendLine />
 		<ChartSelectCard />
 		<EnterTrendBar />
-		<TestChart />
+		<!-- <TestChart /> -->
 	</div>
 </template>
 
 <script setup>
-	import { reactive } from 'vue';
 	import DataDashboard from './DataDashboard.vue';
 	import ChinaMapChart from './Charts/ChinaMapChart.vue';
 	import EnterTrendLine from './Charts/EnterTrendLine.vue';
 	import EnterTrendBar from './Charts/EnterTrendBar.vue';
 	import ChartSelectCard from './ChartSelectCard.vue';
-	import TestChart from './Charts/TestChart.vue';
-
-	const obj = reactive({});
+	// import TestChart from './Charts/TestChart.vue';
 </script>
 
 <style lang="scss" scoped>

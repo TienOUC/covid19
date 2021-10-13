@@ -14,7 +14,7 @@
 	.switch-box {
 		vertical-align: baseline;
 		margin: 0 auto;
-		width: 100%;
+		width: calc(100% - 2.5rem);
 		height: 4.1875rem;
 
 		.switch-btn {
