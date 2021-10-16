@@ -8,7 +8,7 @@
 <script setup>
 	import Header from './components/Header.vue';
 	import Banner from './components/Banner.vue';
-	import Content from './components/Content.vue';
+	import Content from './views/Content.vue';
 	import Footer from './components/Footer.vue';
 </script>
 

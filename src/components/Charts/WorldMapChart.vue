@@ -1,5 +1,5 @@
 <template>
-	<div class="china-map">
+	<div class="world-map">
 		<SwitchButton :name="state.name" :desc="desc" @change-card="handleChnageCard" />
 		<BaseChart :options="state.chartOption" :chart-id="state.chartId" />
 	</div>
@@ -8,13 +8,13 @@
 <script setup>
 	import { reactive, computed } from 'vue';
 	import BaseChart from './BaseChart.vue';
-	import chinaMapOptions from '../../options/china/chinaMapOption';
+	import worldMapOptions from '../../options/world/worldMapOption';
 	import SwitchButton from '../SwitchButton.vue';
 
 	const state = reactive({
-		chartOption: chinaMapOptions,
-		chartId: 'china-map-chart',
-		name: 'china-map-input',
+		chartOption: worldMapOptions,
+		chartId: 'world-map-chart',
+		name: 'world-map-input',
 		desc1: '现有确诊病例数，排除治愈、死亡',
 		desc2: '累计确诊病例数，包含治愈、死亡',
 		flag: false,
@@ -31,7 +31,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.china-map {
+	.world-map {
 		width: 100%;
 		height: auto;
 		margin: 0 auto;

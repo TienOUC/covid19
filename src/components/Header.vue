@@ -23,7 +23,6 @@
 
 <style lang="scss" scoped>
 	.header {
-		width: 100%;
 		height: 50px;
 		padding: 0 50px;
 		display: flex;

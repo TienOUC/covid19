@@ -4,12 +4,12 @@
 
 <script setup>
 	import { reactive } from 'vue';
-	import BaseChart from './BaseChart.vue';
-	import enterTrendLineOption from '../../options/china/enterTrendLineOption';
+	import BaseChart from '../Charts/BaseChart.vue';
+	import testOption from '../../options/tst/testOption';
 
 	const state = reactive({
-		chartOption: enterTrendLineOption,
-		chartId: 'trent-line-chart',
+		chartOption: testOption,
+		chartId: 'test-chart',
 	});
 </script>
 

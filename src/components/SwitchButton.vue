@@ -1,14 +1,28 @@
 <template>
 	<div class="switch-box">
 		<div class="switch-btn">
-			<input type="checkbox" id="input" />
-			<label for="input"></label>
+			<input type="checkbox" :id="props.name" />
+			<label :for="props.name" @click="changeCard"></label>
 		</div>
-		<div class="text">现有确诊病例数，排除治愈、死亡</div>
+		<div class="text">{{ props.desc }}</div>
 	</div>
 </template>
 
-<script setup></script>
+<script setup>
+	import { defineEmits } from 'vue';
+
+	const props = defineProps({
+		name: String,
+		desc: String,
+	});
+
+	const emit = defineEmits(['change-card']);
+
+	//点击发送change-card事件给父组件
+	const changeCard = () => {
+		emit('change-card');
+	};
+</script>
 
 <style lang="scss" scoped>
 	.switch-box {

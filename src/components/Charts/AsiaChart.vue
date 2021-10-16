@@ -5,11 +5,11 @@
 <script setup>
 	import { reactive } from 'vue';
 	import BaseChart from './BaseChart.vue';
-	import enterTrendLineOption from '../../options/china/enterTrendLineOption';
+	import asiaOptions from '../../options/world/asiaOption';
 
 	const state = reactive({
-		chartOption: enterTrendLineOption,
-		chartId: 'trent-line-chart',
+		chartOption: asiaOptions,
+		chartId: 'asia-chart',
 	});
 </script>
 

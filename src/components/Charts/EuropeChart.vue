@@ -5,11 +5,11 @@
 <script setup>
 	import { reactive } from 'vue';
 	import BaseChart from './BaseChart.vue';
-	import testOption from '../../options/testOption';
+	import europeOptions from '../../options/world/europeOption';
 
 	const state = reactive({
-		chartOption: testOption,
-		chartId: 'test-chart',
+		chartOption: europeOptions,
+		chartId: 'europe-chart',
 	});
 </script>
 
