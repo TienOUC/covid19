@@ -6,10 +6,10 @@
 </template>
 
 <script setup>
-	import Header from './components/Header.vue';
-	import Banner from './components/Banner.vue';
+	import Header from './components/Common/Header.vue';
+	import Banner from './components/Common/Banner.vue';
 	import Content from './views/Content.vue';
-	import Footer from './components/Footer.vue';
+	import Footer from './components/Common/Footer.vue';
 </script>
 
 <style lang="scss">

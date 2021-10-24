@@ -15,7 +15,7 @@
 		margin: 0 auto;
 		padding-bottom: 1.25rem;
 		width: 48rem;
-		min-height: auto;
+		height: auto;
 		background-color: #fff;
 		border-radius: 0.75rem;
 	}

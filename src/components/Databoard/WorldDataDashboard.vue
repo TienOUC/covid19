@@ -1,8 +1,5 @@
 <template>
-	<!-- <DataDashboardTitle /> -->
 	<DataDashboard :title="state.title" :content="state.content" />
-	<!-- <div>{{ state.content }}</div> -->
-	<!-- <DataDashboard :title="state.title" /> -->
 </template>
 
 <script setup>

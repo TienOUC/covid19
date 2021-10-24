@@ -1,7 +1,7 @@
 <template>
 	<header class="header">
 		<div class="header-img">
-			<img src="../assets/headerImg.png" alt="headerImg" />
+			<img src="../../assets/headerImg.png" alt="headerImg" />
 		</div>
 		<label class="header-chain" for="header-chain">
 			<div class="header-text">

@@ -5,20 +5,16 @@
 			<span>数据更新至 {{ updateTime }}</span>
 			<span><img src="../../assets/question-circle.svg" />数据说明</span>
 		</div>
-		<!-- <DataItemContainer /> -->
-		<!-- <DataItemRow :dataContent="state.content1" /> -->
-		<!-- <DataItemRow :dataContent="state.content2" /> -->
+
 		<div class="data-item-row">
-			<DataItem v-for="item in state.content" :title="item.title" :color="item.color" :count="item.count" />
+			<DataDashboardItem v-for="item in state.content" :title="item.title" :color="item.color" :count="item.count" />
 		</div>
 	</div>
 </template>
 
 <script setup>
 	import { computed, reactive, onMounted } from 'vue';
-	// import DataItemContainer from './DataItemContainer.vue';
-	// import DataItemRow from './DataItemRow.vue';
-	import DataItem from './DataItem.vue';
+	import DataDashboardItem from './DataDashboardItem.vue';
 	const props = defineProps({
 		title: String,
 		content: {

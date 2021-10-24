@@ -29,12 +29,12 @@ const store = createStore({
 		switchChinaMap(context, flag) {
 			setTimeout(() => {
 				context.commit('changeChinaFlagState', flag);
-			}, 50);
+			}, 100);
 		},
 		switchWorldMap(context, flag) {
 			setTimeout(() => {
 				context.commit('changeWorldFlagState', flag);
-			}, 50);
+			}, 100);
 		},
 	},
 });

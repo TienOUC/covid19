@@ -4,7 +4,6 @@
 		<div class="data-current" :style="{ color: color }">
 			{{ count }}
 		</div>
-		<!-- <div class="data-desc">较昨日<span :style="{ color: color }">-32</span></div> -->
 	</div>
 </template>
 
@@ -18,8 +17,6 @@
 
 <style lang="scss" scoped>
 	.data-content {
-		// width: 11.46875rem;
-		// margin-bottom: 1.25rem;
 		width: 15.25rem;
 		height: 3.9375rem;
 		display: flex;
@@ -36,7 +33,6 @@
 			color: #333;
 		}
 		.data-current {
-			// color: #e86d48;
 			font-size: 1.1875rem;
 			font-weight: 700;
 		}

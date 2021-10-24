@@ -11,10 +11,10 @@
 
 <script setup>
 	import ChinaDataDashboard from '../components/Databoard/ChinaDataDashboard.vue';
-	import ChinaSwitchButton from '../components/ChinaSwitchButton.vue';
+	import ChinaSwitchButton from '../components/Button/ChinaSwitchButton.vue';
 	import ChinaMapChart from '../components/Charts/ChinaMapChart.vue';
 	import ChinaTrendChart from '../components/Charts/ChinaTrendChart.vue';
-	import ChinaSwitchCards from '../components/ChinaSwitchCards.vue';
+	import ChinaSwitchCards from '../components/Card/ChinaSwitchCards.vue';
 	import ChinaTable from '../components/Table/ChinaTable.vue';
 </script>
 

@@ -1,5 +1,10 @@
 <template>
 	<div class="table-container">
+		<div class="header-title">
+			{{ headerTitle }}<span> <img src="../../assets/question-circle.svg" /></span>
+		</div>
+		<input type="checkbox" :id="tableId" />
+		<label :for="tableId"></label>
 		<table>
 			<thead>
 				<tr class="table-header">
@@ -12,8 +17,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="table-body">
-					<td v-for="item in content">
+				<tr class="table-body" v-for="items in content">
+					<td v-for="item in items">
 						<div>
 							<span></span>
 							<span>{{ item }}</span>
@@ -27,8 +32,10 @@
 
 <script setup>
 	defineProps({
+		headerTitle: String,
 		title: Array,
-		content: Array,
+		content: Object,
+		tableId: String,
 	});
 </script>
 
@@ -37,10 +44,28 @@
 		margin: 0 auto;
 		width: 45.875rem;
 		height: auto;
+		position: relative;
+
+		.header-title {
+			display: flex;
+			align-items: center;
+			margin: 1.25rem 0;
+			font-weight: bolder;
+			img {
+				display: block;
+				height: 1rem;
+				width: 1rem;
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
 		table {
 			width: 100%;
 			display: flex;
 			flex-direction: column;
+			height: 440px;
+			overflow: hidden;
 
 			.table-header {
 				width: 100%;
@@ -62,7 +87,7 @@
 					align-items: center;
 
 					&:nth-child(1) {
-						// background-color: #00bec9;
+						font-weight: bolder;
 						border-top-left-radius: 0.1875rem;
 						border-bottom-left-radius: 0.1875rem;
 					}
@@ -110,5 +135,53 @@
 				}
 			}
 		}
+	}
+
+	// show more button
+	input {
+		display: none;
+	}
+
+	label {
+		z-index: 1000;
+		border-radius: 0.1875rem;
+		position: absolute;
+		bottom: 0;
+		height: 2.0625rem;
+		width: 100%;
+		background-color: #f5f6f7;
+
+		&::before,
+		&::after {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			font-weight: 700;
+			text-align: center;
+			font-size: 1rem;
+			padding: 0.5rem 0;
+			transition: all 0.2s ease;
+			cursor: pointer;
+		}
+
+		&::before {
+			content: '展开全部';
+		}
+		&::after {
+			content: '收起全部';
+			display: none;
+		}
+	}
+	[type='checkbox']:checked + label::before {
+		display: none;
+	}
+
+	[type='checkbox']:checked + label::after {
+		display: block;
+	}
+
+	[type='checkbox']:checked ~ table {
+		height: auto;
+		overflow: auto;
 	}
 </style>

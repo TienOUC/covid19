@@ -46,7 +46,7 @@
 			display: block;
 			width: 0;
 			height: 0;
-			font-weight: 700;
+			font-weight: bolder;
 			border-width: 0.3125rem;
 			border-style: solid;
 			border-color: transparent transparent #00bec7;

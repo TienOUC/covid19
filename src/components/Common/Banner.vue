@@ -1,6 +1,6 @@
 <template>
 	<div class="banner">
-		<div class="banner-icon"><img src="../assets/bannerIcon.svg" alt="" /></div>
+		<div class="banner-icon"><img src="../../assets/bannerIcon.svg" alt="" /></div>
 		<p>{{ subtitle }}</p>
 		<h1>{{ title }}</h1>
 		<span>共 9,392,198,546 人次已浏览</span>
@@ -21,7 +21,7 @@
 <style lang="scss" scoped>
 	.banner {
 		margin: 0 auto;
-		background: center / contain no-repeat url(../assets/bannerBgImg.png);
+		background: center / contain no-repeat url(../../assets/bannerBgImg.png);
 		width: 48rem;
 		height: 187px;
 

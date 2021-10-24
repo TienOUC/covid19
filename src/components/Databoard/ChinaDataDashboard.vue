@@ -3,9 +3,6 @@
 	<keep-alive>
 		<DataDashboard :title="state.title" :content="state.content" />
 	</keep-alive>
-
-	<!-- <div>{{ state.content }}</div> -->
-	<!-- <DataDashboard :title="state.title" /> -->
 </template>
 
 <script setup>
@@ -45,8 +42,22 @@
 			method: 'get',
 			url: 'http://localhost:3000/src/data/data.json',
 		}).then((res) => {
-			const result = res.data.getListByCountryTypeService2true;
 			const result2 = res.data.getAreaStat;
+			let enterConfirmedCount = result2.reduce((pre, item) => {
+				if (item.cities[0]) {
+					return pre + item.cities[0].confirmedCount;
+				} else {
+					return 0;
+				}
+			}, 0);
+
+			state.content.forEach((el) => {
+				if (el.title == '境外输入') {
+					el.count = formatCount(enterConfirmedCount);
+				}
+			});
+
+			const result = res.data.getListByCountryTypeService2true;
 			result.forEach((item) => {
 				if (item.provinceName == '中国') {
 					state.content.forEach((el) => {
@@ -56,9 +67,9 @@
 						if (el.title == '现有疑似') {
 							el.count = formatCount(item.suspectedCount);
 						}
-						if (el.title == '境外输入') {
-							el.count = formatCount(item.currentConfirmedCount);
-						}
+						// if (el.title == '境外输入') {
+						// 	el.count = formatCount(item.currentConfirmedCount);
+						// }
 						if (el.title == '累计确诊') {
 							el.count = formatCount(item.confirmedCount);
 						}
@@ -69,7 +80,6 @@
 							el.count = formatCount(item.deadCount);
 						}
 					});
-					// console.log(state.content);
 				}
 			});
 		});

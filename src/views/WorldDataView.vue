@@ -11,10 +11,10 @@
 
 <script setup>
 	import WorldDataDashboard from '../components/Databoard/WorldDataDashboard.vue';
-	import WorldSwitchButton from '../components/WorldSwitchButton.vue';
+	import WorldSwitchButton from '../components/Button/WorldSwitchButton.vue';
 	import WorldMapChart from '../components/Charts/WorldMapChart.vue';
 	import WorldTrendChart from '../components/Charts/WorldTrendChart.vue';
-	import WorldSwitchCard from '../components/WorldSwitchCard.vue';
+	import WorldSwitchCard from '../components/Card/WorldSwitchCard.vue';
 	import WorldTable from '../components/Table/WorldTable.vue';
 </script>
 
