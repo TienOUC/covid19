@@ -19,7 +19,7 @@
 	.footer {
 		margin-top: 200px;
 		width: 100%;
-		height: 60px;
+		height: 3.75rem;
 		background-color: #fff;
 		display: flex;
 		justify-content: center;
@@ -27,9 +27,9 @@
 			display: flex;
 			align-items: center;
 			a {
-				margin: 0 20px;
+				margin: 0 1.25rem;
 				text-decoration: none;
-				font-size: 0.75rem;
+				font-size: 0.875rem;
 				font-weight: 800;
 				color: #918e8e;
 			}
