@@ -29,7 +29,9 @@
 			a {
 				margin: 0 20px;
 				text-decoration: none;
-				color: #000;
+				font-size: 0.75rem;
+				font-weight: 800;
+				color: #918e8e;
 			}
 		}
 	}

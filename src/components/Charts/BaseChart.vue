@@ -1,40 +1,45 @@
 <template>
 	<div class="chart-container">
-		<div :id="state.chartId" class="chart"></div>
+		<div class="chart" ref="container"></div>
 	</div>
 </template>
 
 <script setup>
 	import * as echarts from 'echarts';
-	import { reactive, onBeforeMount, onMounted } from 'vue';
+	import { ref, watch, onMounted } from 'vue';
 
 	const props = defineProps({
-		options: Object,
-		chartId: String,
+		options: {
+			required: true,
+			type: Object,
+			default: {},
+		},
 	});
 
-	const state = reactive({
-		chartId: null,
-		// chartOptions: null,
-	});
-
-	onBeforeMount(() => {
-		state.chartId = props.chartId;
-		// state.chartOptions = props.options;
-	});
+	const container = ref(null);
+	const chart = ref(null);
 
 	onMounted(() => {
-		const baseChartId = echarts.init(document.getElementById(state.chartId));
-		// baseChartId.setOption(state.chartOptions);
-		baseChartId.setOption(props.options);
+		chart.value = echarts.init(container.value);
+		chart.value.clear();
+		chart.value.setOption(props.options);
 	});
+
+	watch(
+		() => props.options,
+		(newOptions) => {
+			chart.value.clear();
+			chart.value.setOption(newOptions);
+		},
+		{ deep: true }
+	);
 </script>
 
 <style lang="scss" scoped>
 	.chart-container {
 		width: 45.5rem;
 		height: auto;
-		padding: 1.25rem 1.25rem 0;
+		padding: 0 1.25rem;
 
 		.chart {
 			border: 1px #eeeeee solid;

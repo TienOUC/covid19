@@ -5,7 +5,7 @@
 <script setup>
 	import { reactive } from 'vue';
 	import BaseChart from './BaseChart.vue';
-	import europeOptions from '../../options/world/europeOption';
+	import europeOptions from '../../options/world/europeTop10Option';
 
 	const state = reactive({
 		chartOption: europeOptions,

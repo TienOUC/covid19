@@ -1,16 +1,34 @@
 <template>
-	<div class="china-switch-cards">
-		<BaseCard :content="state.content" />
+	<div class="china-switch-cards" @click="changeCard($event)">
+		<BaseCard :content="state.content" :index="state.focusIndex" />
 	</div>
 </template>
 
 <script setup>
 	import { reactive } from 'vue';
 	import BaseCard from './BaseCard.vue';
+	import { useStore } from 'vuex';
 
+	const store = useStore();
 	const state = reactive({
-		content: ['境外输入-新增趋势', '境外输入-累计趋势', '境外输入-省级TOP10'],
+		focusIndex: 0,
+		content: ['本土新增-确诊趋势', '本土新增-省级TOP10', '现有疑似-省级TOP10', '境外输入-省级TOP10'],
 	});
+
+	const changeCard = (event) => {
+		const target = event.target;
+		const className = target.className;
+
+		if (className == 'card') {
+			const index = parseInt(target.dataset.index);
+			state.focusIndex = index;
+			cardSelected(index);
+		}
+	};
+
+	const cardSelected = (index) => {
+		store.commit('changeChinaChartIndex', index);
+	};
 </script>
 
 <style lang="scss" scoped>

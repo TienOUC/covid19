@@ -2,7 +2,7 @@
 	<div class="switch-box">
 		<div class="switch-btn">
 			<input type="checkbox" :id="props.name" />
-			<label :for="props.name" @click="changeCard"></label>
+			<label :for="props.name" @click="clickBtn"></label>
 		</div>
 		<div class="text">{{ props.desc }}</div>
 	</div>
@@ -16,22 +16,24 @@
 		desc: String,
 	});
 
-	const emit = defineEmits(['change-card']);
+	const emit = defineEmits(['click-btn']);
 
-	//点击发送change-card事件给父组件
-	const changeCard = () => {
-		emit('change-card');
+	//点击发送click-btn事件给父组件
+	const clickBtn = () => {
+		emit('click-btn');
 	};
 </script>
 
 <style lang="scss" scoped>
 	.switch-box {
-		vertical-align: baseline;
-		margin: 0 auto;
-		width: calc(100% - 2.5rem);
+		padding-top: 1.25rem;
+		width: 100%;
 		height: 4.1875rem;
+		background-color: #f8f9fa;
 
 		.switch-btn {
+			margin: 0 auto;
+			width: calc(100% - 2.5rem);
 			height: 2.5rem;
 			box-sizing: border-box;
 			padding: 2px;

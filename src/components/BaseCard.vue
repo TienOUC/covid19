@@ -1,8 +1,8 @@
 <template>
 	<div
 		v-for="(item, index) in props.content"
-		:class="['card', state.cardIndex == index ? 'card-select' : '']"
-		@click="cardSelected(index)"
+		:class="['card', props.index == index ? 'card-select' : '']"
+		:data-index="index"
 	>
 		<span>{{ item.split('-')[0] }}</span>
 		<span>{{ item.split('-')[1] }}</span>
@@ -10,19 +10,10 @@
 </template>
 
 <script setup>
-	import { reactive } from 'vue';
-
 	const props = defineProps({
+		index: Number,
 		content: Array,
 	});
-
-	const state = reactive({
-		cardIndex: 0,
-	});
-
-	const cardSelected = (index) => {
-		state.cardIndex = index;
-	};
 </script>
 
 <style lang="scss" scoped>
@@ -40,6 +31,7 @@
 			cursor: pointer;
 		}
 		span {
+			pointer-events: none;
 			display: block;
 			font-size: 0.875rem;
 		}

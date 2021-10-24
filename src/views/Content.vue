@@ -6,8 +6,8 @@
 </template>
 
 <script setup>
-	import ChinaDataView from './china/ChinaDataView.vue';
-	import WorldDataView from './world/WorldDataView.vue';
+	import ChinaDataView from './ChinaDataView.vue';
+	import WorldDataView from './WorldDataView.vue';
 </script>
 
 <style lang="scss" scoped>

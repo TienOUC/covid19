@@ -19,8 +19,19 @@
 		selectItemIndex: 0,
 	});
 
+	// 切换标题
 	const titleToggle = (index) => {
 		state.selectItemIndex = index;
+		jumpToContent(index);
+	};
+
+	// 跳转到标题对应的页面内容区域
+	const jumpToContent = (index) => {
+		const content = document.querySelector('#content' + index);
+		window.scrollTo({
+			top: content.offsetTop,
+			behavior: 'smooth',
+		});
 	};
 </script>
 

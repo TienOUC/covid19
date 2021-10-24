@@ -1,13 +1,16 @@
 <template>
 	<div class="data-content">
 		<div class="data-title">{{ title }}</div>
-		<div class="data-current" :style="{ color: color }">2501</div>
-		<div class="data-desc">较昨日-32</div>
+		<div class="data-current" :style="{ color: color }">
+			{{ count }}
+		</div>
+		<!-- <div class="data-desc">较昨日<span :style="{ color: color }">-32</span></div> -->
 	</div>
 </template>
 
 <script setup>
 	defineProps({
+		count: String,
 		title: String,
 		color: String,
 	});
@@ -15,7 +18,9 @@
 
 <style lang="scss" scoped>
 	.data-content {
-		width: 11.46875rem;
+		// width: 11.46875rem;
+		// margin-bottom: 1.25rem;
+		width: 15.25rem;
 		height: 3.9375rem;
 		display: flex;
 		flex-wrap: wrap;

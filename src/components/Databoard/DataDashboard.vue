@@ -1,20 +1,39 @@
 <template>
 	<div class="data-board">
-		<h3>{{ title }}</h3>
+		<h3>{{ props.title }}</h3>
 		<div class="data-board-subtitle">
 			<span>数据更新至 {{ updateTime }}</span>
 			<span><img src="../../assets/question-circle.svg" />数据说明</span>
 		</div>
-		<DataItemContainer />
+		<!-- <DataItemContainer /> -->
+		<!-- <DataItemRow :dataContent="state.content1" /> -->
+		<!-- <DataItemRow :dataContent="state.content2" /> -->
+		<div class="data-item-row">
+			<DataItem v-for="item in state.content" :title="item.title" :color="item.color" :count="item.count" />
+		</div>
 	</div>
 </template>
 
 <script setup>
-	import { computed } from 'vue';
-	import DataItemContainer from './DataItemContainer.vue';
-
-	defineProps({
+	import { computed, reactive, onMounted } from 'vue';
+	// import DataItemContainer from './DataItemContainer.vue';
+	// import DataItemRow from './DataItemRow.vue';
+	import DataItem from './DataItem.vue';
+	const props = defineProps({
 		title: String,
+		content: {
+			required: true,
+			type: Array,
+			default: [],
+		},
+	});
+
+	const state = reactive({
+		content: [],
+	});
+
+	onMounted(() => {
+		state.content = props.content;
 	});
 
 	const updateTime = computed(() => {
@@ -65,6 +84,13 @@
 		.data-item {
 			display: flex;
 			justify-content: space-between;
+		}
+
+		.data-item-row {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin-bottom: 1.25rem;
 		}
 	}
 </style>

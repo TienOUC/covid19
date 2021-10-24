@@ -54,6 +54,7 @@
 		.card-select {
 			background-color: #00bec7;
 			color: #fff;
+			font-weight: 900;
 			position: relative;
 			&::before {
 				content: '';

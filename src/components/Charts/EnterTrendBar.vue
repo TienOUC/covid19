@@ -5,7 +5,7 @@
 <script setup>
 	import { reactive } from 'vue';
 	import BaseChart from './BaseChart.vue';
-	import enterTrendBarOption from '../../options/china/enterTrendBarOption';
+	import enterTrendBarOption from '../../options/china/enterTop10Option';
 
 	const state = reactive({
 		chartOption: enterTrendBarOption,
