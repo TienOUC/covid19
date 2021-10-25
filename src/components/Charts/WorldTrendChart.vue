@@ -58,7 +58,7 @@
 	);
 
 	const getCurrentConfirmedTop10Data = async () => {
-		const res = await fetch('http://localhost:3000/src/data/data.json');
+		const res = await fetch('http://localhost:5000/src/data/data.json');
 		const data = await res.json();
 		const result = data.getListByCountryTypeService2true;
 		const filterArr = [];
@@ -77,7 +77,7 @@
 	};
 
 	const getSouthAmericaIcrData = async () => {
-		const res = await fetch('http://localhost:3000/src/data/data.json');
+		const res = await fetch('http://localhost:5000/src/data/data.json');
 		const data = await res.json();
 		const result = data.getListByCountryTypeService2true;
 		const filterArr = [];
@@ -96,7 +96,7 @@
 	};
 
 	const getAficaIcrData = async () => {
-		const res = await fetch('http://localhost:3000/src/data/data.json');
+		const res = await fetch('http://localhost:5000/src/data/data.json');
 		const data = await res.json();
 		const result = data.getListByCountryTypeService2true;
 		const filterArr = [];
@@ -115,7 +115,7 @@
 	};
 
 	const getAsiaIcrData = async () => {
-		const res = await fetch('http://localhost:3000/src/data/data.json');
+		const res = await fetch('http://localhost:5000/src/data/data.json');
 		const data = await res.json();
 		const result = data.getListByCountryTypeService2true;
 		const filterArr = [];
@@ -134,7 +134,7 @@
 	};
 
 	const getEuropeIcrData = async () => {
-		const res = await fetch('http://localhost:3000/src/data/data.json');
+		const res = await fetch('http://localhost:5000/src/data/data.json');
 		const data = await res.json();
 		const result = data.getListByCountryTypeService2true;
 		const filterArr = [];

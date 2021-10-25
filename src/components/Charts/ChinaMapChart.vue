@@ -27,7 +27,7 @@
 			if (newFlag) {
 				axios({
 					method: 'get',
-					url: 'http://localhost:3000/src/data/data.json',
+					url: 'http://localhost:5000/src/data/data.json',
 				}).then((res) => {
 					const filterArr = [];
 					const result = res.data.getAreaStat;
@@ -41,7 +41,7 @@
 					state.chartOption = chinaMapOptions(filterArr);
 				});
 
-				// const res = await fetch('http://localhost:3000/src/data/data.json');
+				// const res = await fetch('http://localhost:5000/src/data/data.json');
 				// const data = await res.json();
 				// const result = data.getAreaStat;
 				// const filterArr = [];
@@ -58,7 +58,7 @@
 			if (!newFlag) {
 				axios({
 					method: 'get',
-					url: 'http://localhost:3000/src/data/data.json',
+					url: 'http://localhost:5000/src/data/data.json',
 				}).then((res) => {
 					const filterArr = [];
 					const result = res.data.getAreaStat;
@@ -71,7 +71,7 @@
 
 					state.chartOption = chinaMapOptions(filterArr);
 				});
-				// const res = await fetch('http://localhost:3000/src/data/data.json');
+				// const res = await fetch('http://localhost:5000/src/data/data.json');
 				// const data = await res.json();
 				// const result = data.getAreaStat;
 				// const filterArr = [];
@@ -90,7 +90,7 @@
 
 	//请求数据
 	const getJsonData = async () => {
-		const res = await fetch('http://localhost:3000/src/data/data.json');
+		const res = await fetch('http://localhost:5000/src/data/data.json');
 		const data = await res.json();
 		const result = data.getAreaStat;
 		const filterArr = [];

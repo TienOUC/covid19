@@ -49,7 +49,7 @@
 
 	// 本土30日新增趋势
 	const getHistoryIncData = async () => {
-		const res = await fetch('http://localhost:3000/src/data/historyData.json');
+		const res = await fetch('http://localhost:5000/src/data/historyData.json');
 		const data = await res.json();
 		const times = data.times;
 		let time = [];
@@ -74,7 +74,7 @@
 
 	//昨日本土新增TOP10
 	const getYesterdayLocalConfirmedData = async () => {
-		const res = await fetch('http://localhost:3000/src/data/data.json');
+		const res = await fetch('http://localhost:5000/src/data/data.json');
 		const data = await res.json();
 		const result = data.fetchRecentStatV2;
 		const filterArr = [];
@@ -94,7 +94,7 @@
 
 	//现有省级疑似感染TOP10
 	const getSuspectedTop10Data = async () => {
-		const res = await fetch('http://localhost:3000/src/data/data.json');
+		const res = await fetch('http://localhost:5000/src/data/data.json');
 		const data = await res.json();
 		const result = data.getAreaStat;
 		const filterArr = [];
@@ -114,7 +114,7 @@
 
 	// 请求省级境外输入TOP10数据
 	const getEnterTop10Data = async () => {
-		const res = await fetch('http://localhost:3000/src/data/data.json');
+		const res = await fetch('http://localhost:5000/src/data/data.json');
 		const data = await res.json();
 		const result = data.getAreaStat;
 		const filterArr = [];

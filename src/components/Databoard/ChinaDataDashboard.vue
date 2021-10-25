@@ -40,7 +40,7 @@
 	const getCurrentConfirmedCount = async () => {
 		axios({
 			method: 'get',
-			url: 'http://localhost:3000/src/data/data.json',
+			url: 'http://localhost:5000/src/data/data.json',
 		}).then((res) => {
 			const result2 = res.data.getAreaStat;
 			let enterConfirmedCount = result2.reduce((pre, item) => {

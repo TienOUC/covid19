@@ -28,7 +28,7 @@
 				axios({
 					method: 'get',
 					// url: 'https://covid.dodolo.top/api/',
-					url: 'http://localhost:3000/src/data/data.json',
+					url: 'http://localhost:5000/src/data/data.json',
 				}).then((res) => {
 					const filterArr = [];
 					const result = res.data.getListByCountryTypeService2true;
@@ -47,7 +47,7 @@
 				axios({
 					method: 'get',
 					// url: 'https://covid.dodolo.top/api/',
-					url: 'http://localhost:3000/src/data/data.json',
+					url: 'http://localhost:5000/src/data/data.json',
 				}).then((res) => {
 					const filterArr = [];
 					const result = res.data.getListByCountryTypeService2true;
@@ -66,7 +66,7 @@
 
 	//请求数据
 	const getJsonData = async () => {
-		// const res = await fetch('http://localhost:3000/src/data/data.json');
+		// const res = await fetch('http://localhost:5000/src/data/data.json');
 		// const data = await res.json();
 		// const result = data.getListByCountryTypeService2true;
 		// const filterArr = [];
@@ -83,7 +83,7 @@
 		axios({
 			method: 'get',
 			// url: 'https://covid.dodolo.top/api/',
-			url: 'http://localhost:3000/src/data/data.json',
+			url: 'http://localhost:5000/src/data/data.json',
 		}).then((res) => {
 			const filterArr = [];
 			const result = res.data.getListByCountryTypeService2true;

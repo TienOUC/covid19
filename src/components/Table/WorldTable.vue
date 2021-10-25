@@ -26,7 +26,7 @@
 	const getProvinceData = () => {
 		axios({
 			method: 'get',
-			url: 'http://localhost:3000/src/data/data.json',
+			url: 'http://localhost:5000/src/data/data.json',
 		})
 			.then((res) => {
 				const filterArr = [];

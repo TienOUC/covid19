@@ -27,10 +27,10 @@ function getDataFromDxy() {
 			eval($getListByCountryTypeService2true.replace(/window/g, 'dataObj'));
 			eval($fetchRecentStatV2.replace(/window/g, 'dataObj'));
 			// fs模块写入数据到本地
-			fs.writeFile(path.join(__dirname, '../src/data/data.json'), JSON.stringify(dataObj), (err) => {
-				// fs.writeFile(path.join(__dirname, './data/dxyData.json'), JSON.stringify(dataObj), (err) => {
+
+			fs.writeFile(path.join(__dirname, '../data/data.json'), JSON.stringify(dataObj), (err) => {
 				if (err) throw err;
-				console.log('dxyData.json写入成功');
+				console.log('data.json写入成功');
 			});
 		})
 		.catch((err) => {
@@ -38,6 +38,6 @@ function getDataFromDxy() {
 		});
 }
 
-nodeSchedule.scheduleJob('* * * * * *', function () {
+nodeSchedule.scheduleJob('15 1 * * * *', function () {
 	getDataFromDxy();
 });

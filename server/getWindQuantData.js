@@ -47,11 +47,11 @@ async function getHistorydata() {
 	try {
 		const response = await superagent.get(url);
 		const data = await response.text;
-		fs.writeFile(path.join(__dirname, './data/windQuantData.json'), data, (err) => {
+		fs.writeFile(path.join(__dirname, '../data/historyData.json'), data, (err) => {
 			if (err) {
 				console.log(`[File Path Err] ${err}`);
 			} else {
-				console.log(`windQuantData.json写入成功`);
+				console.log(`historyData.json写入成功`);
 			}
 		});
 	} catch (err) {
@@ -77,7 +77,7 @@ async function getDataFromWindquant() {
 	}
 }
 
-nodeSchedule.scheduleJob('* * * * * *', async function () {
+nodeSchedule.scheduleJob('45 1 * * * *', async function () {
 	getDataFromWindquant()
 		.then(() => {
 			console.log(`success`);

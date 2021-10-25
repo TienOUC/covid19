@@ -37,7 +37,7 @@
 	const getCurrentConfirmedCount = async () => {
 		axios({
 			method: 'get',
-			url: 'http://localhost:3000/src/data/data.json',
+			url: 'http://localhost:5000/src/data/data.json',
 		}).then((res) => {
 			const result = res.data.getListByCountryTypeService2true;
 			const result2 = res.data.getAreaStat;
