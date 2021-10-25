@@ -24,13 +24,9 @@
 	watch(
 		() => store.state.worldMapflag,
 		(newFlag) => {
+			const filterArr = [];
 			if (newFlag) {
-				axios({
-					method: 'get',
-					// url: 'https://covid.dodolo.top/api/',
-					url: 'http://localhost:5000/src/data/data.json',
-				}).then((res) => {
-					const filterArr = [];
+				axios.get('https://covid.dodolo.top/api').then((res) => {
 					const result = res.data.getListByCountryTypeService2true;
 					result.forEach((item) => {
 						filterArr.push({
@@ -44,12 +40,7 @@
 			}
 
 			if (!newFlag) {
-				axios({
-					method: 'get',
-					// url: 'https://covid.dodolo.top/api/',
-					url: 'http://localhost:5000/src/data/data.json',
-				}).then((res) => {
-					const filterArr = [];
+				axios.get('https://covid.dodolo.top/api').then((res) => {
 					const result = res.data.getListByCountryTypeService2true;
 					result.forEach((item) => {
 						filterArr.push({
@@ -66,26 +57,9 @@
 
 	//请求数据
 	const getJsonData = async () => {
-		// const res = await fetch('http://localhost:5000/src/data/data.json');
-		// const data = await res.json();
-		// const result = data.getListByCountryTypeService2true;
-		// const filterArr = [];
+		const filterArr = [];
 
-		// //过滤数据
-		// result.forEach((item) => {
-		// 	filterArr.push({
-		// 		name: item.provinceName, // 国家
-		// 		value: state.flag ? item.confirmedCount : item.currentConfirmedCount,
-		// 	});
-		// });
-		// state.chartOption = worldMapOptions(filterArr);
-
-		axios({
-			method: 'get',
-			// url: 'https://covid.dodolo.top/api/',
-			url: 'http://localhost:5000/src/data/data.json',
-		}).then((res) => {
-			const filterArr = [];
+		axios.get('https://covid.dodolo.top/api').then((res) => {
 			const result = res.data.getListByCountryTypeService2true;
 			result.forEach((item) => {
 				filterArr.push({

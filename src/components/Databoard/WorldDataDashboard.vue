@@ -35,18 +35,13 @@
 	);
 
 	const getCurrentConfirmedCount = async () => {
-		axios({
-			method: 'get',
-			url: 'http://localhost:5000/src/data/data.json',
-		}).then((res) => {
+		axios.get('https://covid.dodolo.top/api').then((res) => {
 			const result = res.data.getListByCountryTypeService2true;
-			const result2 = res.data.getAreaStat;
-
 			let currentConfirmedCount = result.reduce((pre, item) => pre + item.currentConfirmedCount, 0);
 			let curedCount = result.reduce((pre, item) => pre + item.curedCount, 0);
 			let deadCount = result.reduce((pre, item) => pre + item.deadCount, 0);
 			let confirmedCount = result.reduce((pre, item) => pre + item.confirmedCount, 0);
-
+			
 			state.content.forEach((el) => {
 				if (el.title == '现有确诊') {
 					el.count = formatCount(currentConfirmedCount);
@@ -67,10 +62,7 @@
 					el.count = formatCount(((deadCount * 100) / confirmedCount).toFixed(2)) + '%';
 				}
 			});
-
-			// console.log(state.content);
 		});
-		return;
 	};
 </script>
 

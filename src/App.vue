@@ -2,6 +2,7 @@
 	<Header headTitle="Tien's Blog" />
 	<Banner subtitle="新型冠状病毒肺炎" title="疫情实时大数据报告" />
 	<Content />
+	<Tip />
 	<Footer />
 </template>
 
@@ -10,6 +11,7 @@
 	import Banner from './components/Common/Banner.vue';
 	import Content from './views/Content.vue';
 	import Footer from './components/Common/Footer.vue';
+	import Tip from './components/Common/Tip.vue';
 </script>
 
 <style lang="scss">

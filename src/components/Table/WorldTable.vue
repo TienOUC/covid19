@@ -24,12 +24,10 @@
 	});
 
 	const getProvinceData = () => {
-		axios({
-			method: 'get',
-			url: 'http://localhost:5000/src/data/data.json',
-		})
+		const filterArr = [];
+		axios
+			.get('https://covid.dodolo.top/api')
 			.then((res) => {
-				const filterArr = [];
 				const result = res.data.getListByCountryTypeService2true;
 				result.forEach((item) => {
 					filterArr.push({

@@ -24,12 +24,10 @@
 	watch(
 		() => store.state.chinaMapflag,
 		async (newFlag) => {
+			const filterArr = [];
+
 			if (newFlag) {
-				axios({
-					method: 'get',
-					url: 'http://localhost:5000/src/data/data.json',
-				}).then((res) => {
-					const filterArr = [];
+				axios.get('https://covid.dodolo.top/api').then((res) => {
 					const result = res.data.getAreaStat;
 					result.forEach((item) => {
 						filterArr.push({
@@ -40,27 +38,9 @@
 
 					state.chartOption = chinaMapOptions(filterArr);
 				});
-
-				// const res = await fetch('http://localhost:5000/src/data/data.json');
-				// const data = await res.json();
-				// const result = data.getAreaStat;
-				// const filterArr = [];
-
-				// result.forEach((item) => {
-				// 	filterArr.push({
-				// 		name: item.provinceShortName, // 省份
-				// 		// value: state.flag ? item.confirmedCount : item.currentConfirmedCount,
-				// 		value: item.confirmedCount,
-				// 	});
-				// });
-				// state.chartOption = chinaMapOptions(filterArr);
 			}
 			if (!newFlag) {
-				axios({
-					method: 'get',
-					url: 'http://localhost:5000/src/data/data.json',
-				}).then((res) => {
-					const filterArr = [];
+				axios.get('https://covid.dodolo.top/api').then((res) => {
 					const result = res.data.getAreaStat;
 					result.forEach((item) => {
 						filterArr.push({
@@ -71,38 +51,24 @@
 
 					state.chartOption = chinaMapOptions(filterArr);
 				});
-				// const res = await fetch('http://localhost:5000/src/data/data.json');
-				// const data = await res.json();
-				// const result = data.getAreaStat;
-				// const filterArr = [];
-
-				// result.forEach((item) => {
-				// 	filterArr.push({
-				// 		name: item.provinceShortName, // 省份
-				// 		// value: state.flag ? item.confirmedCount : item.currentConfirmedCount,
-				// 		value: item.currentConfirmedCount,
-				// 	});
-				// });
-				// state.chartOption = chinaMapOptions(filterArr);
 			}
 		}
 	);
 
 	//请求数据
 	const getJsonData = async () => {
-		const res = await fetch('http://localhost:5000/src/data/data.json');
-		const data = await res.json();
-		const result = data.getAreaStat;
 		const filterArr = [];
-
-		result.forEach((item) => {
-			filterArr.push({
-				name: item.provinceShortName, // 省份
-				value: item.currentConfirmedCount,
+		axios.get('https://covid.dodolo.top/api').then((res) => {
+			const result = res.data.getAreaStat;
+			result.forEach((item) => {
+				filterArr.push({
+					name: item.provinceShortName, // 省份
+					value: item.currentConfirmedCount,
+				});
 			});
+			
+			state.chartOption = chinaMapOptions(filterArr);
 		});
-		state.chartOption = chinaMapOptions(filterArr);
-		return;
 	};
 </script>
 

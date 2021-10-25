@@ -12,6 +12,7 @@
 	import africaTop10Option from '../../options/world/africaTop10Option';
 	import asiaTop10Option from '../../options/world/asiaTop10Option';
 	import europeTop10Option from '../../options/world/europeTop10Option';
+	import axios from 'axios';
 
 	const state = reactive({
 		chartOption: worldTop10Option(),
@@ -19,8 +20,7 @@
 	});
 
 	onMounted(async () => {
-		const { province, count } = await optionCreater(getCurrentConfirmedTop10Data);
-		state.chartOption = worldTop10Option(province, count);
+		getCurrentConfirmedTop10Data();
 	});
 
 	watch(
@@ -28,128 +28,134 @@
 		async (newIdx) => {
 			//world Top10
 			if (newIdx == 0) {
-				const { province, count } = await optionCreater(getCurrentConfirmedTop10Data);
-				state.chartOption = worldTop10Option(province, count);
+				getCurrentConfirmedTop10Data();
 			}
 			//southAmerica & northAmerica Top10
 			if (newIdx == 1) {
-				const { province, count } = await optionCreater(getSouthAmericaIcrData);
-				state.chartOption = southAmericaTop10Option(province, count);
+				getSouthAmericaIcrData();
 			}
 
 			//Africa Top10
 			if (newIdx == 2) {
-				const { province, count } = await optionCreater(getAficaIcrData);
-				state.chartOption = africaTop10Option(province, count);
+				getAficaIcrData();
 			}
 
 			//Asia Top10
 			if (newIdx == 3) {
-				const { province, count } = await optionCreater(getAsiaIcrData);
-				state.chartOption = asiaTop10Option(province, count);
+				getAsiaIcrData();
 			}
 
 			//Europe Top10
 			if (newIdx == 4) {
-				const { province, count } = await optionCreater(getEuropeIcrData);
-				state.chartOption = europeTop10Option(province, count);
+				getEuropeIcrData();
 			}
 		}
 	);
 
 	const getCurrentConfirmedTop10Data = async () => {
-		const res = await fetch('http://localhost:5000/src/data/data.json');
-		const data = await res.json();
-		const result = data.getListByCountryTypeService2true;
 		const filterArr = [];
-		result.forEach((item) => {
-			if (item) {
-				filterArr.push({
-					province: item.provinceName,
-					count: item.currentConfirmedCount,
-				});
-			}
+		axios.get('https://covid.dodolo.top/api').then((res) => {
+			const result = res.data.getListByCountryTypeService2true;
+			result.forEach((item) => {
+				if (item) {
+					filterArr.push({
+						province: item.provinceName,
+						count: item.currentConfirmedCount,
+					});
+				}
+			});
+			// 按照各省境外输入累计病例数排序
+			filterArr.sort((a, b) => b['count'] - a['count']);
+			// 返回top10
+			const temp = filterArr.slice(0, 10);
+			const { province, count } = optionCreater(temp);
+			state.chartOption = worldTop10Option(province, count);
 		});
-		// 按照各省境外输入累计病例数排序
-		filterArr.sort((a, b) => b['count'] - a['count']);
-		// 返回top10
-		return filterArr.slice(0, 10);
 	};
 
 	const getSouthAmericaIcrData = async () => {
-		const res = await fetch('http://localhost:5000/src/data/data.json');
-		const data = await res.json();
-		const result = data.getListByCountryTypeService2true;
 		const filterArr = [];
-		result.forEach((item) => {
-			if (item.continents == '南美洲' || item.continents == '北美洲') {
-				filterArr.push({
-					province: item.provinceName,
-					count: item.incrVo.currentConfirmedIncr,
-				});
-			}
+		axios.get('https://covid.dodolo.top/api').then((res) => {
+			const result = res.data.getListByCountryTypeService2true;
+			result.forEach((item) => {
+				if (item.continents == '南美洲' || item.continents == '北美洲') {
+					filterArr.push({
+						province: item.provinceName,
+						count: item.incrVo.currentConfirmedIncr,
+					});
+				}
+			});
+			// 按照各省境外输入累计病例数排序
+			filterArr.sort((a, b) => b['count'] - a['count']);
+			// 返回top10
+			const temp = filterArr.slice(0, 10);
+			const { province, count } = optionCreater(temp);
+			state.chartOption = southAmericaTop10Option(province, count);
 		});
-		// 按照各省境外输入累计病例数排序
-		filterArr.sort((a, b) => b['count'] - a['count']);
-		// 返回top10
-		return filterArr.slice(0, 10);
 	};
 
 	const getAficaIcrData = async () => {
-		const res = await fetch('http://localhost:5000/src/data/data.json');
-		const data = await res.json();
-		const result = data.getListByCountryTypeService2true;
 		const filterArr = [];
-		result.forEach((item) => {
-			if (item.continents == '非洲') {
-				filterArr.push({
-					province: item.provinceName,
-					count: item.incrVo.currentConfirmedIncr,
-				});
-			}
+		axios.get('https://covid.dodolo.top/api').then((res) => {
+			const result = res.data.getListByCountryTypeService2true;
+			result.forEach((item) => {
+				if (item.continents == '非洲') {
+					filterArr.push({
+						province: item.provinceName,
+						count: item.incrVo.currentConfirmedIncr,
+					});
+				}
+			});
+			// 按照各省境外输入累计病例数排序
+			filterArr.sort((a, b) => b['count'] - a['count']);
+			// 返回top10
+			const temp = filterArr.slice(0, 10);
+			const { province, count } = optionCreater(temp);
+			state.chartOption = africaTop10Option(province, count);
 		});
-		// 按照各省境外输入累计病例数排序
-		filterArr.sort((a, b) => b['count'] - a['count']);
-		// 返回top10
-		return filterArr.slice(0, 10);
 	};
 
 	const getAsiaIcrData = async () => {
-		const res = await fetch('http://localhost:5000/src/data/data.json');
-		const data = await res.json();
-		const result = data.getListByCountryTypeService2true;
 		const filterArr = [];
-		result.forEach((item) => {
-			if (item.continents == '亚洲') {
-				filterArr.push({
-					province: item.provinceName,
-					count: item.incrVo.currentConfirmedIncr,
-				});
-			}
+		axios.get('https://covid.dodolo.top/api').then((res) => {
+			const result = res.data.getListByCountryTypeService2true;
+			result.forEach((item) => {
+				if (item.continents == '亚洲') {
+					filterArr.push({
+						province: item.provinceName,
+						count: item.incrVo.currentConfirmedIncr,
+					});
+				}
+			});
+
+			// 按照各省境外输入累计病例数排序
+			filterArr.sort((a, b) => b['count'] - a['count']);
+			// 返回top10
+			const temp = filterArr.slice(0, 10);
+			const { province, count } = optionCreater(temp);
+			state.chartOption = asiaTop10Option(province, count);
 		});
-		// 按照各省境外输入累计病例数排序
-		filterArr.sort((a, b) => b['count'] - a['count']);
-		// 返回top10
-		return filterArr.slice(0, 10);
 	};
 
 	const getEuropeIcrData = async () => {
-		const res = await fetch('http://localhost:5000/src/data/data.json');
-		const data = await res.json();
-		const result = data.getListByCountryTypeService2true;
 		const filterArr = [];
-		result.forEach((item) => {
-			if (item.continents == '欧洲') {
-				filterArr.push({
-					province: item.provinceName,
-					count: item.incrVo.currentConfirmedIncr,
-				});
-			}
+		axios.get('https://covid.dodolo.top/api').then((res) => {
+			const result = res.data.getListByCountryTypeService2true;
+			result.forEach((item) => {
+				if (item.continents == '欧洲') {
+					filterArr.push({
+						province: item.provinceName,
+						count: item.incrVo.currentConfirmedIncr,
+					});
+				}
+			});
+			// 按照各省境外输入累计病例数排序
+			filterArr.sort((a, b) => b['count'] - a['count']);
+			// 返回top10
+			const temp = filterArr.slice(0, 10);
+			const { province, count } = optionCreater(temp);
+			state.chartOption = europeTop10Option(province, count);
 		});
-		// 按照各省境外输入累计病例数排序
-		filterArr.sort((a, b) => b['count'] - a['count']);
-		// 返回top10
-		return filterArr.slice(0, 10);
 	};
 </script>
 

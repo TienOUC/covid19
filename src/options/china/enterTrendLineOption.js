@@ -7,7 +7,7 @@ export default (categories = [], data = []) => {
 			},
 		},
 		tooltip: {
-			trigger: 'item',
+			trigger: 'axis',
 			triggerOn: 'mousemove',
 			borderWidth: 0,
 			backgroundColor: 'rgba(50,50,50,0.7)',

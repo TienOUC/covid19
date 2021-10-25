@@ -38,10 +38,7 @@
 	);
 
 	const getCurrentConfirmedCount = async () => {
-		axios({
-			method: 'get',
-			url: 'http://localhost:5000/src/data/data.json',
-		}).then((res) => {
+		axios.get('https://covid.dodolo.top/api').then((res) => {
 			const result2 = res.data.getAreaStat;
 			let enterConfirmedCount = result2.reduce((pre, item) => {
 				if (item.cities[0]) {
@@ -56,7 +53,6 @@
 					el.count = formatCount(enterConfirmedCount);
 				}
 			});
-
 			const result = res.data.getListByCountryTypeService2true;
 			result.forEach((item) => {
 				if (item.provinceName == '中国') {
@@ -83,7 +79,6 @@
 				}
 			});
 		});
-		return;
 	};
 </script>
 

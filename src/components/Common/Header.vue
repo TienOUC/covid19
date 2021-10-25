@@ -6,7 +6,7 @@
 		<label class="header-chain" for="header-chain">
 			<div class="header-text">
 				<span>
-					<a href="https://www.baidu.com" id="header-chain">
+					<a href="https://www.dodolo.top" id="header-chain">
 						{{ headTitle }}
 					</a>
 				</span>
@@ -23,16 +23,15 @@
 
 <style lang="scss" scoped>
 	.header {
-		height: 50px;
-		padding: 0 50px;
+		height: 3.125rem;
+		padding: 0 3.125rem;
 		display: flex;
-		// background-color: #f8f8f9;
 		background-color: #fff;
 
 		.header-img {
-			margin: 5px;
-			height: 40px;
-			width: 40px;
+			margin: .3125rem;
+			height: 2.5rem;
+			width: 2.5rem;
 			img {
 				width: 100%;
 				height: 100%;
@@ -46,7 +45,7 @@
 
 			.header-text {
 				display: flex;
-				margin: 5px;
+				margin: .3125rem;
 				align-items: center;
 				a {
 					color: #000;
