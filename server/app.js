@@ -16,7 +16,6 @@ app.get('/api/data', (req, res, next) => {
 	});
 });
 
-
 app.get('/api/historyData', (req, res, next) => {
 	fs.readFile(path.join(__dirname, '../data/historyData.json'), 'utf8', (err, data) => {
 		if (err) res.send('historyData.json读取失败');
@@ -25,4 +24,4 @@ app.get('/api/historyData', (req, res, next) => {
 	});
 });
 
-app.listen(8088, () => console.log('http://127.0.0.1:8088'));
+app.listen(8082, () => console.log('http://127.0.0.1:8082'));
